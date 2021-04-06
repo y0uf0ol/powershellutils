@@ -1,4 +1,4 @@
 # powershellutils
 
 
-simple Powershell script that make my life easier
+simple Powershell scripts that make my life easier
