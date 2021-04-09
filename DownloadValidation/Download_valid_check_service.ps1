@@ -10,7 +10,7 @@
         #Pfad angaben
 
 #--------------------------------------------[Variables]-------------------------------------------------
-$dwpath="c:\Users\uwall\Downloads"
+$dwpath="c:\Users\%Username%\Downloads"
 
 #--------------------------------------------[INIT]-------------------------------------------------
 # Init PowerShell Gui
@@ -22,13 +22,13 @@ Add-Type -AssemblyName System.Drawing
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
 $DAWform                            = New-Object system.Windows.Forms.Form
-$DAWform.ClientSize                 = '800,600'
+$DAWform.ClientSize                 = '750,400'
 $DAWform.text                       = "Download Assistant"
 $DAWform.BackColor                  = "#ffffff"
 $DAWform.TopMost                    = $false
 
 $Titel                              = New-Object system.Windows.Forms.Label
-$Titel.text                         = "Gimma your Links"
+$Titel.text                         = "Download Simp tester"
 $Titel.AutoSize                     = $true
 $Titel.width                        = 25
 $Titel.height                       = 10
@@ -36,7 +36,7 @@ $Titel.location                     = New-Object System.Drawing.Point(20,20)
 $Titel.Font                         = 'Microsoft Sans Serif,13'
 
 $Description                        = New-Object system.Windows.Forms.Label
-$Description.text                   = 'Enter Download Link and the Filename of the Output'
+$Description.text                   = 'Early Alpha Version for OnlyFans Subs. Put in your Link and Name and let the magic happen'
 $Description.AutoSize               = $false
 $Description.width                  = 450
 $Description.height                 = 50
@@ -94,14 +94,14 @@ $DAHashLabel4.Font                   = 'Microsoft Sans Serif,10,style=Bold'
 #Link Input
 $DALink                             = New-Object System.Windows.Forms.TextBox
 $DALink.AutoSize                    = $true
-$DALink.width                       = 300
+$DALink.width                       = 500
 $DALink.height                      = 20
 $DALink.location                    = New-Object System.Drawing.Point(100,115)
 
 #Name of Download
 $DAName                             = New-Object System.Windows.Forms.TextBox
 $DAName.AutoSize                    = $true
-$DAName.width                       = 300
+$DAName.width                       = 500
 $DAName.height                      = 20
 $DAName.location                    = New-Object System.Drawing.Point(100,145)
 
@@ -141,7 +141,7 @@ $downloadBtn.BackColor                = "#ffffff"
 $downloadBtn.text                     = "Download"
 $downloadBtn.width                    = 90
 $downloadBtn.height                   = 30
-$downloadBtn.location                 = New-Object System.Drawing.Point(260,300)
+$downloadBtn.location                 = New-Object System.Drawing.Point(650,110)
 $downloadBtn.Font                     = 'Microsoft Sans Serif,10'
 $downloadBtn.ForeColor                = "#000"
 $downloadBtn.Add_Click({
@@ -179,7 +179,7 @@ $deleteBtn.BackColor                = "#ffffff"
 $deleteBtn.text                     = "Delte File"
 $deleteBtn.width                    = 90
 $deleteBtn.height                   = 30
-$deleteBtn.location                 = New-Object System.Drawing.Point(600,300)
+$deleteBtn.location                 = New-Object System.Drawing.Point(650,150)
 $deleteBtn.Font                     = 'Microsoft Sans Serif,10'
 $deleteBtn.ForeColor                = "#000"
 $downloadBtn.Add_Click({
@@ -192,7 +192,7 @@ $cancelBtn.BackColor                = "#ffffff"
 $cancelBtn.text                     = "Close"
 $cancelBtn.width                    = 90
 $cancelBtn.height                   = 30
-$cancelBtn.location                 = New-Object System.Drawing.Point(400,300)
+$cancelBtn.location                 = New-Object System.Drawing.Point(650,350)
 $cancelBtn.Font                     = 'Microsoft Sans Serif,10'
 $cancelBtn.ForeColor                = "#000"
 $cancelBtn.DialogResult             = [System.Windows.Forms.DialogResult]::Cancel
