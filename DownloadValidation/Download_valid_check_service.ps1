@@ -2,8 +2,15 @@
 ## Author: y0uf0ol
 ## Creation 08.4.2021
 ## ToDo: 
-#--------------------------------------------[Variables]-------------------------------------------------
+        #Virusttotal Api anbindung
+        #GUI überarbeiten
+        #Auto Clipboard übernahmen in textfeld
+        #Backend für Hash Validierung
+        #Delete File and Open Folder Button
+        #Pfad angaben
 
+#--------------------------------------------[Variables]-------------------------------------------------
+$dwpath="c:\Users\uwall\Downloads"
 
 #--------------------------------------------[INIT]-------------------------------------------------
 # Init PowerShell Gui
@@ -29,7 +36,7 @@ $Titel.location                     = New-Object System.Drawing.Point(20,20)
 $Titel.Font                         = 'Microsoft Sans Serif,13'
 
 $Description                        = New-Object system.Windows.Forms.Label
-$Description.text                   = 'Enter you Download Link and the Filename of the Output'
+$Description.text                   = 'Enter Download Link and the Filename of the Output'
 $Description.AutoSize               = $false
 $Description.width                  = 450
 $Description.height                 = 50
@@ -166,10 +173,23 @@ $downloadBtn.Add_Click({
         
     })
 
+#Delete Button
+$deleteBtn                          = New-Object system.Windows.Forms.Button
+$deleteBtn.BackColor                = "#ffffff"
+$deleteBtn.text                     = "Delte File"
+$deleteBtn.width                    = 90
+$deleteBtn.height                   = 30
+$deleteBtn.location                 = New-Object System.Drawing.Point(600,300)
+$deleteBtn.Font                     = 'Microsoft Sans Serif,10'
+$deleteBtn.ForeColor                = "#000"
+$downloadBtn.Add_Click({
+      Remove-Item  $DownloadName
+
+    })
 #Cancel Button
 $cancelBtn                          = New-Object system.Windows.Forms.Button
 $cancelBtn.BackColor                = "#ffffff"
-$cancelBtn.text                     = "Cancel"
+$cancelBtn.text                     = "Close"
 $cancelBtn.width                    = 90
 $cancelBtn.height                   = 30
 $cancelBtn.location                 = New-Object System.Drawing.Point(400,300)
@@ -179,7 +199,7 @@ $cancelBtn.DialogResult             = [System.Windows.Forms.DialogResult]::Cance
 $DAWform.CancelButton               = $cancelBtn
 $DAWform.Controls.Add($cancelBtn)
 
-$DAWform.controls.AddRange(@($Titel,$Description,$DALinkLabel,$DAHashLabel2,$DAHashLabel3,$DAHashLabel4,$DAName,$DASha1,$DASha256,$DAMD5,$DAHashLabel,$DASignature,$DANameLabel,$DALink,$downloadBtn,$cancelBtn))
+$DAWform.controls.AddRange(@($Titel,$Description,$DALinkLabel,$DAHashLabel2,$DAHashLabel3,$DAHashLabel4,$DAName,$DASha1,$DASha256,$DAMD5,$DAHashLabel,$DASignature,$DANameLabel,$DALink,$downloadBtn,$deleteBtn,$cancelBtn))
 
 
 
