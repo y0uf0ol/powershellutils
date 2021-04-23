@@ -2,7 +2,7 @@
 ###############     TEAMS AUTO LOADER    ###############
 ## Author: Y0of0ol
 ## Creation 28.3.2021
-## ToDo: Automatic webfetch der Teamsinstall datei
+## ToDo: Automatic webfetch der Teamsinstall dateii
 
 
 
