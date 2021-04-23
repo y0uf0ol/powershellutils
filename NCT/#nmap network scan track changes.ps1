@@ -1,7 +1,7 @@
 #nmap network scan track changes
 
 ##-------------------VARIABLES-------------------------------
-$oldscan="OLDSCAN.xml"
+$oldscan="oLDSCAN.xml"
 $newscan="NEWSCAN.xml"
 $subnet="192.168.0.0/24"
 $outputfile="Diff.txt"
