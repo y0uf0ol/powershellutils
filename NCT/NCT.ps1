@@ -4,7 +4,6 @@
 $FileOut = ".\Scan.csv"
 $FileOutold = ".\ScanOLD.csv"
 $outputfile = ".\ScanDiff.csv"
-## Ping subnet
 $Subnet = "XXX.XXX.XXX.XXX"
 $fromaddress = "XXX@yyy.com" 
 $toaddress = "XXX@yyy.com" 
@@ -15,7 +14,7 @@ $attachment = $outputfile
 $smtpserver = "xxxx" 
 
 
-
+#if file exists
 if(Test-Path $FileOut -PathType Leaf){
     Remove-Item $FileOutold
     Rename-Item $FileOut $FileOutold
