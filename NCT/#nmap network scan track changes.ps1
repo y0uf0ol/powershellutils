@@ -1,11 +1,11 @@
-#nmap network scan track changes
+#NCT Network change Tracker
 
 ##-------------------VARIABLES-------------------------------
 $FileOut = ".\Scan.csv"
 $FileOutold = ".\ScanOLD.csv"
 $outputfile = ".\ScanDiff.csv"
 ## Ping subnet
-$Subnet = "192.168.50."
+$Subnet = "XXX.XXX.XXX.XXX"
 $fromaddress = "XXX@yyy.com" 
 $toaddress = "XXX@yyy.com" 
 $DIFFSubject = "Diff in Network found" 
