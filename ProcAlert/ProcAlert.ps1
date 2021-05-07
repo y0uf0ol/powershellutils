@@ -40,6 +40,7 @@ Function Start-ProcAlert
                 $message.Attachments.Add($attach) 
                 $smtp = new-object Net.Mail.SmtpClient($smtpserver) 
                 $smtp.Send($message)
+                #Customize me
                 Start-Sleep 120
             }
              
