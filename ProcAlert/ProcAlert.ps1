@@ -1,6 +1,7 @@
 #process Alert System
 #Simple Monitoring tool for CPU Load 
 #Sends Top 10 Processes to you via mail
+#TODO: CPU % in Email Attachment
 
 
 #-----------------------------Variables/Functions
