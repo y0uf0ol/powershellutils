@@ -8,51 +8,48 @@
 
 
 $CPUask = Get-Process | Sort-Object CPU -descending
-$CPUload = Get-WmiObject Win32_Processor | Select-Object LoadPercentage
+$CPUload = Get-WmiObject win32_processor | Select-Object LoadPercentage
 
 
 #Customize me PLS
 $Processout = "C:\tmp\ProcAlert Testin\procs.txt" #Choose your Folder Destination
 $smtpserver= XXXXXXXX
 $toaddress= XXXXXXXXXX
-$message= XXXXXXXXX
+$message= "High CPU Load"
 $subject=hostname
 
 
-#if Load high then 70% then send list with top Processes vvi mail
+#if Load higher then 70% send list with top Processes via mail
 Function Start-ProcAlert
 {
     While ($true)
     {
-    
-            if ($CPUload.LoadPercentage -gt 70) {
-               # Write-Host "works"
+                #CPU Load Testing
+                if ($CPUload.LoadPercentage -gt 70) {
+                Remove-Item $Processout
                 $CPUask | Select-Object -First 10 >> $Processout
+                Write-Host "Works"
+
+               #mailblock FIll ME
                 $message = new-object System.Net.Mail.MailMessage 
                 $message.From = $fromaddress 
                 $message.To.Add($toaddress)
                 $message.IsBodyHtml = $True 
-                $message.Subject = $subject "High CPU Load"
+                $message.Subject = $subject
                 $attach = new-object Net.Mail.Attachment($Processout) 
                 $message.Attachments.Add($attach) 
                 $smtp = new-object Net.Mail.SmtpClient($smtpserver) 
                 $smtp.Send($message)
-                Start-Sleep 60
+                Start-Sleep 120
             }
              
-        
+            
     }
 }
 
 
 
 #----------------------------Service
-
-
-
-
-
-
 
 #Start the Service
 Start-ProcAlert
