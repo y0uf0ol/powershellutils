@@ -7,7 +7,7 @@
 
 
 
-$CPUask = Get-Process | Sort-Object CPU -descending
+$CPUask = Get-Process | Sort-Object WS -descending
 $CPUload = Get-WmiObject win32_processor | Select-Object LoadPercentage
 
 
@@ -20,15 +20,18 @@ $subject=hostname
 
 
 #if Load higher then 70% send list with top Processes via mail
+#function Get-CPU
+
 Function Start-ProcAlert
 {
     While ($true)
     {
+            
                 #CPU Load Testing
-                if ($CPUload.LoadPercentage -gt 70) {
+                if ($CPUload.LoadPercentage -gt 10) {
                 Remove-Item $Processout
                 $CPUask | Select-Object -First 10 >> $Processout
-                Write-Host "Works"
+                #Write-Host "Works"
 
                #mailblock FIll ME
                 $message = new-object System.Net.Mail.MailMessage 
@@ -54,4 +57,6 @@ Function Start-ProcAlert
 
 #Start the Service
 Start-ProcAlert
+
+#messin around
 
