@@ -1,4 +1,5 @@
 #NCT Network change Tracker
+#Compares two Scans and writes out the changes nad sends them via mail
 
 ##-------------------VARIABLES-------------------------------
 $FileOut = ".\Scan.csv"
