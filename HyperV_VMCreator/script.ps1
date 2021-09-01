@@ -7,6 +7,7 @@ $VMVHD="$VmFolder\VHD\$VMName.vhdx"
 #Get-Values
 $VMName=Read-Host "Enter VM Name"
 $ISOPath=Read-Host "Path to ISO"
+$CPU=Read-Host "Enter Processor Count"
 #Read and convert VHD
 $messageVHD = "Enter VHD Size in GB (or specify unit)"
 do
@@ -25,6 +26,9 @@ do
     $messageVHD = "Invalid Entry, please enter RAM amount in GB (or specify unit)"
 }
 until ($Size) 
+$Size
+
+
 #Read and convert RAM
 $messageRAM = "Enter RAM amount in GB (or specify unit)"
 do
@@ -43,9 +47,7 @@ do
     $messageRAM = "Invalid Entry, please enter RAM amount in GB (or specify unit)"
 }
 until ($RAM) 
-
 $RAM
-$CPU=Read-Host "Enter Processor Count"
 
 #Create the VM
 New-VM -Name $VMName -Generation 2 -BootDevice VHD -Path $VmFolder -MemoryStartupBytes $RAM -NewVHDPath $VMVHD -NewVHDSizeBytes $Size
