@@ -1,8 +1,6 @@
 #---- VM creator
 
-#Variables
-$VmFolder="C:\VM\$VMName"
-$VMVHD="$VmFolder\VHD\$VMName.vhdx"
+
 
 #Get-Values
 $VMName=Read-Host "Enter VM Name"
@@ -48,6 +46,10 @@ do
 }
 until ($RAM) 
 $RAM
+
+#Variables needs to be changed 
+$VmFolder="C:\VM\$VMName"
+$VMVHD="$VmFolder\VHD\$VMName.vhdx"
 
 #Create the VM
 New-VM -Name $VMName -Generation 2 -BootDevice VHD -Path $VmFolder -MemoryStartupBytes $RAM -NewVHDPath $VMVHD -NewVHDSizeBytes $Size
