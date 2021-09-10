@@ -58,3 +58,5 @@ Set-VM -Name $VMName -ProcessorCount $CPU -DynamicMemory -MemoryMaximumBytes $RA
 #Add VM ISO
 Add-VMDvdDrive -VMName $VMName
 Set-VMDvdDrive -VMName $VMName -Path $ISOPath
+
+Set-VMFirmware -VmName $VMName -FirstBootDevice (Get-VMDvdDrive -VMName $VMName)
