@@ -10,7 +10,7 @@ $fromaddress = "XXX@yyy.com"
 $toaddress = "XXX@yyy.com" 
 $DIFFSubject = "Diff in Network found" 
 $OKSubject = "Everything OK" 
-$body = Get-Content $outputfile
+$body = Get-Content $outputfile | Format-Table -AutoSize
 $attachment = $outputfile 
 $smtpserver = "xxxx" 
 
