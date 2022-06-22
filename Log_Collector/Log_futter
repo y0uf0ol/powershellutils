@@ -1,0 +1,46 @@
+## Collects:
+#### System, Security and Defender Eventlogs
+#### active Network Connections, Services, Procesess
+#### Collect Exclusions of Defender
+#### Autoruns, Scheduled Tasks
+
+####################### Variables #####################
+
+$Name = HOSTNAME.EXE
+$time = Get-Date
+$Defender = 'Microsoft-Windows-Windows Defender/Operational'
+mkdir C:\Temp\Logs
+$Enum_Group = Get-LocalGroup
+####################### COLLECT LOGS #####################
+
+wevtutil.exe epl System C:\Temp\Logs\System.evtx
+wevtutil.exe epl $Defender C:\Temp\Logs\Defender.evtx
+wevtutil.exe epl Security C:\Temp\Logs\Security.evtx
+
+
+
+
+####################### Network Collection #####################
+
+netstat -aon | Out-File -FilePath C:\Temp\Logs\ActiveConnections.txt
+Get-DnsClientCache | Out-File -FilePath C:\Temp\Logs\DNSCache.txt
+
+
+
+
+####################### System Info #####################
+
+systeminfo.exe | Out-File -FilePath C:\Temp\Logs\systeminfo.txt
+Get-History | Out-File -FilePath C:\Temp\Logs\PowershellHistory.txt
+#Check All Groups
+foreach($group in $Enum_Group.Name){
+
+    net localgroup $group >> C:\Temp\Logs\Groups.txt
+}
+Get-MpComputerStatus
+# Defender Exclusions
+
+
+Get-ScheduledTask | fl Taskname,Taskpath,Principal,Author,Settings,Date,Description,Triggers,State,Source
+
+
